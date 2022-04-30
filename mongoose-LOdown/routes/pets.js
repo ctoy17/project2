@@ -1,9 +1,11 @@
-// const express = require('express');
-// const router = express.Router();
-// const petsCtrl = require('../controllers/pets');
+const express = require('express');
+const router = express.Router();
+const petsCtrl = require('../controllers/pets');
 
-// router.get('/', petsCtrl.index);
-// router.get('/new', petsCtrl.new);
-// router.post('/', petsCtrl.create);
+const isLoggedIn = require('../config/auth');
 
-// module.exports = router;
+router.get('/', petsCtrl.index);
+router.get('/new', isLoggedIn, petsCtrl.new);
+router.post('/', isLoggedIn, petsCtrl.create);
+
+module.exports = router;
