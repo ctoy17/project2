@@ -1,17 +1,30 @@
 <%- include('../partials/header') %>
 <title>Pet List</title>
+<div class="currentPet">
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Pet Name</th>
+            <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% pets.forEach(function(p) { %>
+                <tr>
+                    <td><%= p.petName %></td>
+                    <td><%= p.petAge %></td>
+                    <td><%= p.animalType %></td>
+                    <td><%= p.petBreed %></td>
+                    <td><a href="/pets/<%= p._id %>">DETAILS</a></td>
+                    <td>
+                      <form action="/pets/<%= p._id %>?_method=DELETE" method="POST" id="deletePet">
+                      <button type="submit" form="deletePet">DELETE</button>
+                      </form>
+                    </td>
+                </tr>
+                    <% }); %>
+    </tbody>
+    </table>
+    
 
-<div class="row" style="justify-content: center">
-    <div class="card col-md-3 mt-100">
-    <div class="card-content">
-    <div class="card-body p-0">
-    <div class="profile"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg"> </div>
-    <div class="card-title"> <%petName> <br /> </div>
-    <div class="card-subtitle">
-    <p> <small class="text-muted"> </small> </p>
 
-</div>
-</div>
-</div>
-</div>
-<-- add edit and remove here -->

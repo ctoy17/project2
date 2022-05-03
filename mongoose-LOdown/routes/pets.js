@@ -6,6 +6,8 @@ const isLoggedIn = require('../config/auth');
 
 router.get('/', petsCtrl.index);
 router.get('/new', isLoggedIn, petsCtrl.new);
+router.get('/:id', petsCtrl.show);
 router.post('/', isLoggedIn, petsCtrl.create);
+router.delete('/:id', petsCtrl.delete);
 
 module.exports = router;

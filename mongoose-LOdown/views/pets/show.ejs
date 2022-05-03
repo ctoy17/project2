@@ -1,1 +1,81 @@
-this is where events will show when added and linked to the pet id
+<%- include('../partials/header') %>
+<section id="show">
+  <div>
+    <div id="divshow">Pet:</div>
+    <div id="divshow">
+      <%= pet.petName %>
+    </div>
+    <br><br>
+    <div>
+      <div id="divshow">Pet Age:</div>
+      <div id="divshow">
+        <%= pet.petAge %>
+      </div>
+      <br><br>
+      <br><br>
+      <div id="comment-div">
+        <h2>Events</h2>
+        <% if (user) { %>
+          <form id="add-events-form" method="POST" action="/pets/<%= pet._id %>/events">
+            <label>Event Type:</label>
+            <textarea name="entryEvent"></textarea>
+            <label>Time:</label>
+            <textarea name="eventTime"> </textarea>
+            <label>Event Duration:</label>
+            <textarea name="duration"></textarea>
+            <label>Details:</label>
+            <textarea name="details"></textarea>
+            <input type="submit" value="Add Event">
+          </form>
+          <% } %> <br>
+            <% if (pet.events.length) { %>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Event Type</th>
+                    <th>Event Time</th>
+                    <th>Details</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+                  <% pet.events.forEach(function(e) { %>
+                    <tr>
+                      <td>
+                        <%= e.entryEvent %>
+                      </td>
+                      <td>
+                        <%= e.eventTime %>
+                      </td>
+                      <td>
+                        <%= e.details %>
+                      </td>
+                      <td>
+                        <% if (user && user._id.equals(e.user)) { %>
+                          <form action="/events/<%= e._id %>?_method=PUT" method="POST">
+                            <input name="details" id="review" value="<%= e.details %>">
+                            <button type="submit">Update Event</button>
+                          </form>
+                          <% } %>
+                      </td>
+                      <td>
+                        <% if (user && user._id.equals(e.user)) { %>
+                          <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
+                            <button type="submit">X</button>
+                          </form>
+                          <% } %>
+                      </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+              </table>
+              <% } else { %>
+                <h5><u><b>No Events Yet</b></u></h5>
+                <% } %>
+        
+  
+    <button><a href="/">Home</a></button>
+    <button><a href="/pets/new">Add Pet</a></button>
+    <button><a href="/pets/<%= pet._id %>/events/new">Add Event</a></button>
+<%- include('../partials/footer') %>
+

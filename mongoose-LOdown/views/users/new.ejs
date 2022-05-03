@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<div>Before adding, please ensure that the Performer is not in the following list:</div>
+<section id="badge-container">
+  <% users.forEach(function(u) { %>
+    <article class="badge"><%= u.name %></article>
+  <% }) %>
+</section>
+
+<form id="add-user-form" action="/users" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name">
+  <input type="submit" value="Add Owner">
+</form>
+
+<%- include('../partials/footer') %>

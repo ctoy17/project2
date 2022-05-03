@@ -9,10 +9,24 @@ require('dotenv').config();
 require('./config/database');
 require('./config/passport');
 var methodOverride = require('method-override');
+var multer = require('multer');
+  
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+  
+var upload = multer({ storage: storage });
 
 var indexRouter = require('./routes/index');
 var petsRouter = require('./routes/pets');
 var eventsRouter = require('./routes/events');
+
+
 
 var app = express();
 
@@ -44,7 +58,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/pets', petsRouter);
-app.use('/events', eventsRouter);
+app.use('/', eventsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
