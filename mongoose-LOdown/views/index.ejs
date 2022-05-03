@@ -1,4 +1,20 @@
 <%- include('partials/header') %>
-<div>LOG IN</div>
+<nav>
+    <img src="https://i.imgur.com/dCnu6w1.png?1">
+    <% if (user) { %>
+        <a href="/pets">ALL PETS</a>
+        <a href="/pets/new">ADD PET</a>
+        <a href="/logout">LOG OUT</a>
+    <% } else { %>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+</nav>
+<section id="home">
+    <div class="home-container">
+      <h3>Welcome to <strong>The LOdown</strong></h3>
+      <h1>Health Tracking for our Furry Friends</h1>
+      <h2>Made Easy</h2>
+    </div>
+</section>  
 
 <%- include('partials/footer') %>

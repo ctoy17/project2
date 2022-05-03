@@ -1,30 +1,15 @@
 <%- include('../partials/header') %>
 <title>Pet List</title>
-<div class="currentPet">
-    <table class="table">
-        <thead>
-            <tr>
-            <th>Pet Name</th>
-            <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% pets.forEach(function(p) { %>
-                <tr>
-                    <td><%= p.petName %></td>
-                    <td><%= p.petAge %></td>
-                    <td><%= p.animalType %></td>
-                    <td><%= p.petBreed %></td>
-                    <td><a href="/pets/<%= p._id %>">DETAILS</a></td>
-                    <td>
-                      <form action="/pets/<%= p._id %>?_method=DELETE" method="POST" id="deletePet">
-                      <button type="submit" form="deletePet">DELETE</button>
-                      </form>
-                    </td>
-                </tr>
-                    <% }); %>
-    </tbody>
-    </table>
-    
 
+<div class="card" style="width: 18rem;">
+    <div class="card-header"><form action="/pets/<%= pets._id %>?_method=DELETE" method="POST" id="deletePet">
+        <button type="submit" form="deletePet">X</button>
+        </form></div>
+    <img class="card-img-top" src="/public/images/<% pets.img%>" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title"><%= pets.petName %></h5>
+        <a href="/pets/<%= pets._id %>" class="btn btn-primary">PET DETAILS</a>
+    </div>
+</div>
+<%- include('../partials/footer') %>
 

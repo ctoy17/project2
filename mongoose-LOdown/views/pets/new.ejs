@@ -1,9 +1,9 @@
 <%- include('../partials/header') %>
 
-<form id="newPet" action="/pets" method="POST">
+<!-- <form id="newPet" action="/pets" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="formFile" class="form-label">Upload an Image</label>
-        <input class="form-control" type="file" name="petPhoto" id="formFile">
+        <input class="form-control" type="file" name="petImage" id="formFile">
     </div>
     <label>Pet's Name:</label>
     <input type="text" name="petName">
@@ -18,6 +18,41 @@
     <label>Breed:</label>
     <input type="text" name="petBreed">
     <input type="submit" value="Add Pet">
-</form>
+</form> -->
 
+<div class="container">
+    <h1 class="mb-4 text-white">New Pet</h1>
+
+    <form action="/pets" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+
+            <label for="petNAme" >Pet Name</label>
+            <input type="text" class="form-control" name="petName" required>
+        </div>
+
+        <div class="form-group">
+
+            <label for="petAge" >Pet Age</label>
+            <input type="number" class="form-control" name="petAge">
+        </div>
+        <div class="form-group">
+
+            <label for="animalType" >Type of Pet</label>
+            <select name="animalType">
+                <option value="cat">Cat</option>
+                <option value="dog">Dog</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="petPhoto" class="text-white">Upload image</label>
+            <input type="file" name="petPhoto" id="petPhoto" class="form-control-file text-white">
+        </div>
+
+        <div class="form-group">
+            <a href="/" class="btn btn-warning">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
 <%- include('../partials/footer') %>

@@ -10,16 +10,16 @@ require('./config/database');
 require('./config/passport');
 var methodOverride = require('method-override');
 var multer = require('multer');
-  
+
 var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
+  destination: (req, file, cb) => {
+      cb(null, './public/images')
+  },
+  filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+  }
 });
-  
+
 var upload = multer({ storage: storage });
 
 var indexRouter = require('./routes/index');
