@@ -5,22 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
+var methodOverride = require('method-override');
+
 require('dotenv').config();
 require('./config/database');
 require('./config/passport');
-var methodOverride = require('method-override');
-var multer = require('multer');
 
-var storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-      cb(null, './public/images')
-  },
-  filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now())
-  }
-});
 
-var upload = multer({ storage: storage });
+
+
 
 var indexRouter = require('./routes/index');
 var petsRouter = require('./routes/pets');

@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<div id="entry-div">
+  <h2>Events</h2>
+  <% if (user) { %>
+    <form id="add-entry-form" method="POST" action="/pets/<%= pet._id %>/entries">
+      <label>Event Type:</label>
+      <textarea name="entryEvent"></textarea>
+      <label>Time:</label>
+      <textarea name="entryTime"> </textarea>
+      <label>Event Duration:</label>
+      <textarea name="duration"></textarea>
+      <label>Details:</label>
+      <textarea name="details"></textarea>
+      <input type="submit" value="Add Event">
+    </form>
+<% } %> </div>
+
+<%- include('../partials/footer') %>
