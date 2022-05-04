@@ -39,14 +39,14 @@ function create (req, res) {
 			return res.render('pets/new');
 		} else {
 			pets.save();
-			res.redirect('pets/index');
+			res.redirect('/pets');
 		};
 	});
 };
 
 function show(req, res) {
     Pet.findById(req.params.id, function (err, pet) {
-        res.render('pets/show', {pet});
+        res.render('pets/show', {title: 'Pet Detail', pet});
     });
 }
 
@@ -56,6 +56,6 @@ function deletePet(req, res){
       if (err){
         res.redirect(`/pets/${pet._id}`)
       }
-        res.redirect('/pets/index');
+        res.redirect('/pets');
     });
 }

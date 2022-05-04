@@ -1,31 +1,63 @@
 <%- include('../partials/header') %>
 <section id="show">
-    <h1><%= pet.petName %></h1>
   <div>
 
    
-    <% if(pet.data) {%>
-        <img class="img" src="data:image/<%= pet.petPhoto %>;base64,
-        <%=pet.data.toString('base64')%>" >
-    <% } %>
+    <% if(pet.petName) {%>
+       <div><img class="img" src="data:image/<%= pet.petPhoto %>;base64,
+        <%=pet.data.toString('base64')%>"> </div> 
 
-  
     <div id="divshow">Pet:</div>
     <div id="divshow">
       <%= pet.petName %>
     </div>
-    <br><br>
       <div id="divshow">Pet Age:</div>
       <div id="divshow">
         <%= pet.petAge %>
       </div>
-      <br><br>
+      <% } %>
       <br><br>
     </div>
 </section>
-         
+
+<div class="col comments">
+    <h3 class="headline">Events</h3>
+    <% if (pet.events.length) { %> 
+        <table>
+            <tbody class=>
+                <% pet.events.forEach((e) => { %>
+                    <tr>
+                        <td>Event Type:</td>
+                        <td> <%= e.entryEvent %></td>
+                        <td class="event-user"><img src="<%= e.userAvatar %>"><%= e.userName %></td>
+                        <td> Time:</td>
+                        <td> <%= e.entryTime %> </td>
+                        <td> Duration:</td>
+                        <td> <%= e.duration %> </td>
+                        <td>Details:</td>
+                        <td> <%= e.details %> </td>
+                    </tr>
+                <% }) %> 
+            </tbody>
+        </table>
+        <% } else { %>
+            <h5>No Entries Yet</h5>
+    <% } %>
+    <br>
+    
+<br><br>
+<% if (user && user._id.equals(pet.user)) { %> 
+    <form action="/pets/<%= pet._id %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-danger">Remove pet from database</button>
+    </form>
+
+<% } %>
+</div> 
+
     <button><a href="/">Home</a></button>
     <button><a href="/pets/new">Add Pet</a></button>
-    <button><a href="/pets/<%= pet._id %>/events/new">Add Event</a></button>
+    <button><a href="/pets/<%= pet._id %>/events">Add Event</a></button>
+
 <%- include('../partials/footer') %>
+
 

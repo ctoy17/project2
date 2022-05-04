@@ -6,34 +6,21 @@
     <% if (user) { %>
     <form action="/pets" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-
             <label for="petName">Pet Name</label>
             <input type="text" name="petName">
-            
-
-        <div class="form-group">
-
             <label for="petAge" >Pet Age</label>
             <input type="number" class="form-control" name="petAge">
-        </div>
-        <div class="form-group">
-
             <label for="animalType" >Type of Pet</label>
             <select name="animalType">
                 <option value="cat">Cat</option>
                 <option value="dog">Dog</option>
                 <option value="other">Other</option>
             </select>
-        </div>
-        <label for="imageFile">Picture</label>
+            <label for="imageFile">Picture</label>
             <input type="file" id="imageFile" accept="image/*" class="form-control" name="img">
         </div>
-        </div>
-
-        <div class="form-group">
             <a href="/" class="btn btn-warning">Cancel</a>
             <button type="submit" class="btn btn-primary">Save</button>
-        </div>
     </form>
-</div>
+    <% } %></div>
 <%- include('../partials/footer') %>

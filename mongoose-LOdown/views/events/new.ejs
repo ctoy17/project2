@@ -3,7 +3,7 @@
 <div id="entry-div">
   <h2>Events</h2>
   <% if (user) { %>
-    <form id="add-entry-form" method="POST" action="/pets/<%= pet._id %>/entries">
+    <form id="add-entry-form" method="POST" action="/pets/<%= petId %>/events">
       <label>Event Type:</label>
       <textarea name="entryEvent"></textarea>
       <label>Time:</label>

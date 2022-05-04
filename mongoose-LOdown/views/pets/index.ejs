@@ -2,23 +2,24 @@
 <title>Pet List</title>
 
 <div class="card" style="width: 18rem;">
-    <div class="card-header"><form action="/pets/<%= pets._id %>?_method=DELETE" method="POST" id="deletePet">
+    <% pets.forEach((p) => { %>
+        <% if (p.data) { %>
+    <div class="card-header"><form action="/pets/<%= p._id %>?_method=DELETE" method="POST" id="deletePet">
         <button type="submit" form="deletePet">X</button>
         </form></div>
-        <% pets.forEach((p) => { %>
-            <% if (p.data) { %>
+
                 <img class="img" src="data:image/<%=p.contentType%>;base64,
                 <%=p.data.toString('base64')%>"  width="160" height="120">
     <div class="card-body">
-        <% } %>
+        
         <p class="petName"><%= p.petName %> </p>
     </div></a>
 
         <a href="/pets/<%= p._id %>" class="btn btn-primary">PET DETAILS</a>
-
+<% } %>
 </div>
 
-<button><a href="/pets/<%= p._id %>/events/new">Add Event</a></button>
+
 <% }) %>
 <button><a href="/pets/new">Add Pet</a></button>
 <%- include('../partials/footer') %>
