@@ -1,66 +1,81 @@
 <%- include('../partials/header') %>
-<section id="show">
-    <div class="card" style="width: 18rem;">
+<img src="https://i.imgur.com/dCnu6w1.png?1" class="d-inline-block align-top" alt="">
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar">
+        
+    </a>
+    <div class="pageLinks">
+            <button><a href="/">Home</a></button>
+            <button><a href="/pets/new">Add Pet</a></button>
+            <button><a href="/pets">Back to Pets</a></button>
+        </div>
+  </nav>
 
-   
-    <% if(pet.petName) {%>
-       <div><img class="card-img-top img" src="data:image/<%= pet.petPhoto %>;base64,
-        <%=pet.data.toString('base64')%>"> </div> 
+<div class="flex-container wrapper">
+    <div id="show" class="row">
+        <div class="col-4">
+            <div class="card">
+                <% if(pet.petName) {%>
+                    <div><img class="card-img-top img" src="data:image/<%= pet.petPhoto %>;base64,
+                        <%=pet.data.toString('base64')%>"> </div> 
+                    <div class="card-body">
+                        <div id="showName"><%= pet.petName %></div>
+                        <div>Age: <%= pet.petAge %></div>
+                    </div>
+                <% } %>
+                <button><a href="/pets/<%= pet._id %>/events">Add Event</a></button>
+            </div>
+        </div>
 
-    <div id="divshow"><%= pet.petName %>
+
+        <div class="col-8">
+            <% if (pet.events.length) { %> 
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead><h3 class="eventTable">Events</h3>
+                            <tr>
+                                <th>Entered By</th>
+                                <th>Event Date</th>
+                                <th>Event Type</th>
+                                <th>Duration</th>
+                                <th>Details</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="enteredEvent">
+                            <% pet.events.forEach((e) => { %>
+                                <tr>
+                                    <td class="event-user"><img src="<%= e.userAvatar %>"></td>
+                                    <td> <%= e.entryDate %></td>
+                                    <td> <%= e.entryEvent %></td>
+                                    <td> <%= e.duration %> </td>
+                                    <td> <%= e.details %> </td>
+                                    <td><% if (user && user._id.equals(e.user)) { %>
+                                        <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
+                                        <button type="submit">X</button>
+                                        </form>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            <% }); %> 
+                        </tbody>
+                    </table>
+                </div>
+            <% } else { %>
+                <h5>No Entries Yet</h5>
+            <% } %>
+        </div>
     </div>
-      <div id="divshow">Age: <%= pet.petAge %></div>
-      <div id="divshow">Owner: <%= user.name %></div>
-      <% } %>
-      <br><br>
-    </div>
-</section>
+</div>
 
-<div class="col comments">
-    <h3 class="headline">Events</h3>
-    <% if (pet.events.length) { %> 
-        <table>
-            <tbody class=>
-                <% pet.events.forEach((e) => { %>
-                    <tr>
-                        <td>Event Type:</td>
-                        <td> <%= e.entryEvent %></td>
-                        <td class="event-user"><img src="<%= e.userAvatar %>"><%= e.userName %></td>
-                        <td> Time:</td>
-                        <td> <%= e.entryTime %> </td>
-                        <td> Duration:</td>
-                        <td> <%= e.duration %> </td>
-                        <td>Details:</td>
-                        <td> <%= e.details %> </td>
-                        <td><% if (user && user._id.equals(e.user)) { %>
-                            <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
-                              <button type="submit">X</button>
-                            </form>
-                            <% } %>
-                        </td>
-                    </tr>
-                <% }); %> 
-            </tbody>
-        </table>
-        <% } else { %>
-            <h5>No Entries Yet</h5>
-    <% } %>
-
-    <br>
-
-    
-<br><br>
+<div class="removeMe">
 <% if (user && user._id.equals(pet.user)) { %> 
     <form action="/pets/<%= pet._id %>?_method=DELETE" method="POST">
-    <button type="submit" class="btn btn-danger">Remove pet from database</button>
+    <button type="submit" class="close">Delete This Pet and All Entries Attached</button>
     </form>
-
 <% } %>
-</div> 
 
-    <button><a href="/">Home</a></button>
-    <button><a href="/pets/new">Add Pet</a></button>
-    <button><a href="/pets/<%= pet._id %>/events">Add Event</a></button>
+
 
 <%- include('../partials/footer') %>
 

@@ -1,16 +1,26 @@
 <%- include('../partials/header') %>
 <title>Pet List</title>
-
+<img src="https://i.imgur.com/dCnu6w1.png?1" class="d-inline-block align-top" alt="">
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar">
+        
+    </a>
+    <div class="pageLinks">
+            <button><a href="/">Home</a></button>
+            <button><a href="/pets/new">Add Pet</a></button>
+    </div>
+  </nav>
 <div class="card-group">
     <% pets.forEach((p) => { %>
         <% if (p.data) { %>
         <div class="col-sm-4">
         <div class="card">
-            <div class="card-body">
+            <div class="card-image">
                     <img class="card-img-top img-fluid img-thumbnail img" src="data:image/<%=p.contentType%>;base64,
                 <%=p.data.toString('base64')%>" >
-                    
-                <h5 class="card-title" class="petName"><%= p.petName %></h5>
+            </div>
+            <div class="card-body">
+                <div class="petName" id="showName"><%= p.petName %></div>
                 <a href="/pets/<%= p._id %>" class="card-link">PET DETAILS</a>
             </div>
         </div>
@@ -20,8 +30,5 @@
 </div> 
 
 
-
-<button><a href="/pets/new">Add Pet</a></button>
-<button><a href="/">Home</a></button>
 <%- include('../partials/footer') %>
 

@@ -67,7 +67,26 @@ a {
   font-size: 24px;
 }
 
+.card-body{
+  text-align: center;
+}
+#showName{
+  font-size: 2em;
+}
+.flex-container {
+  margin: auto;
+  max-width: 75rem;
+}
 
+.removeMe{
+  display: flex;
+  flex-direction: row-reverse;
+}
+@media screen and (min-width: 640px){
+  .flex-container {
+      display: flex;
+  }    
+}
 @media (min-width: 1024px) {
   #home {
     background-attachment: fixed;

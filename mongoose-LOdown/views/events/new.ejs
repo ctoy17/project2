@@ -6,13 +6,11 @@
     <form id="add-entry-form" method="POST" action="/pets/<%= petId %>/events">
       <label>Event Type:</label>
         <select name="entryEvent">
-          <option value="seizure">Seizure</option>
-          <option value="other">Other</option>
+          <option value="Seizure">Seizure</option>
+          <option value="Other">Other</option>
       </select>
       <label>Date:</label>
       <input name="entryDate" type="date">
-      <label>Time:</label>
-      <textarea name="entryTime"> </textarea>
       <label>Event Duration:</label>
       <textarea name="duration"></textarea>
       <label>Details:</label>
