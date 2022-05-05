@@ -1,4 +1,5 @@
 const Pet = require('../models/pet');
+const User = require('../models/user');
 var fs = require('fs');
 var path = require('path');
 
@@ -12,10 +13,13 @@ module.exports ={
 };
 
 function index(req, res) {
-    Pet.find({}, function (err, pets) {
+    Pet.find({}, function (err, pets) { 
         res.render('pets/index', {title: 'All Pets', pets });
     });
 }
+
+
+
 
 function newPet(req, res){
     res.render('pets/new');
@@ -32,9 +36,6 @@ function create (req, res) {
         contentType: 'image/*'
   };
 	Pet.create(petCreate, (err, pets) => {
-		req.body.user = req.user._id
-        req.body.userName = req.user.name
-        req.body.userAvatar = req.user.avatar
 		if (err) {
 			return res.render('pets/new');
 		} else {

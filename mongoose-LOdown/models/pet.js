@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
-        entryEvent: {type: String},
+        entryEvent: {type: String, enum: ['Seizure', 'Other']},
+        entryDate: {type: Date},
         entryTime: {type: String},
         duration: {type: String},
         details: {type: String},

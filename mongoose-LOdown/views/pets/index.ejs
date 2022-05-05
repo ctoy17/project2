@@ -1,26 +1,27 @@
 <%- include('../partials/header') %>
 <title>Pet List</title>
 
-<div class="card" style="width: 18rem;">
+<div class="card-group">
     <% pets.forEach((p) => { %>
         <% if (p.data) { %>
-    <div class="card-header"><form action="/pets/<%= p._id %>?_method=DELETE" method="POST" id="deletePet">
-        <button type="submit" form="deletePet">X</button>
-        </form></div>
+        <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                    <img class="card-img-top img-fluid img-thumbnail img" src="data:image/<%=p.contentType%>;base64,
+                <%=p.data.toString('base64')%>" >
+                    
+                <h5 class="card-title" class="petName"><%= p.petName %></h5>
+                <a href="/pets/<%= p._id %>" class="card-link">PET DETAILS</a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <% }) %>
+</div> 
 
-                <img class="img" src="data:image/<%=p.contentType%>;base64,
-                <%=p.data.toString('base64')%>"  width="160" height="120">
-    <div class="card-body">
-        
-        <p class="petName"><%= p.petName %> </p>
-    </div></a>
-
-        <a href="/pets/<%= p._id %>" class="btn btn-primary">PET DETAILS</a>
-<% } %>
-</div>
 
 
-<% }) %>
 <button><a href="/pets/new">Add Pet</a></button>
+<button><a href="/">Home</a></button>
 <%- include('../partials/footer') %>
 
