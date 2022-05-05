@@ -22,9 +22,9 @@ const upload = multer({ storage: storage });
 
 
 router.get('/', isLoggedIn, petsCtrl.index);
-router.get('/new', isLoggedIn, petsCtrl.new);
-router.get('/:id', isLoggedIn, petsCtrl.show);
-router.post('/', upload.single('img'), isLoggedIn, petsCtrl.create);
+router.get('/new', petsCtrl.new);
+router.get('/:id',  petsCtrl.show);
+router.post('/', upload.single('img'), petsCtrl.create);
 router.delete('/:id', petsCtrl.delete);
 
 module.exports = router;

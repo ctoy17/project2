@@ -4,11 +4,11 @@
   <h2>Events</h2>
   <% if (user) { %>
     <form id="add-entry-form" method="POST" action="/pets/<%= petId %>/events">
-      <label>Event Type:
+      <label>Event Type:</label>
         <select name="entryEvent">
           <option value="seizure">Seizure</option>
           <option value="other">Other</option>
-      </select></label>
+      </select>
       <label>Date:</label>
       <input name="entryDate" type="date">
       <label>Time:</label>
