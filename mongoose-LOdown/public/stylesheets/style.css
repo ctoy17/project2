@@ -17,7 +17,6 @@ body {
 
 .w3-bar{
   background-color: #E8E8E8;
-  padding-right: 20px;
   width: 100%;
 }
 
@@ -36,6 +35,12 @@ body {
 img#logo{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px;
+}
+footer img#footLogo{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px;
+  max-width: 60px;
+  height: auto;
 }
 a {
   text-transform: uppercase;
@@ -94,9 +99,11 @@ a {
 }
 .allPetPage{
   background-color: #30475E;
+  padding-top: 30px;
 }
 .petDetailPage{
   background-color: #30475E;
+  padding-top: 30px;
 }
 .card-img-top{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -122,7 +129,7 @@ a {
 }
 .flex-container {
   margin: auto;
-  max-width: 125rem;
+  max-width: 100rem;
   height: 100%;
 }
 .col-8{
