@@ -1,20 +1,17 @@
 <%- include('partials/header') %>
-<nav>
-    <img src="https://i.imgur.com/dCnu6w1.png?1">
-    <% if (user) { %>
-        <a href="/pets">ALL PETS</a>
-        <a href="/pets/new">ADD PET</a>
-        <a href="/logout">LOG OUT</a>
-    <% } else { %>
-        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-    <% } %>
-</nav>
+
+
 <section id="home">
     <div class="home-container">
-      <h3>Welcome to <strong>The LOdown</strong></h3>
-      <h1>Health Tracking for our Furry Friends</h1>
-      <h2>Made Easy</h2>
+        <img id="logo" src="https://i.imgur.com/frmvBKF.png">
+            <div class="w3-xxlarge w3-text-white w3-wide">
+                <span class="w3-hide-small w3-text-light-grey">Health Tracker for your Furry Friends</span>
+                <h2><% if (user) { %>
+                    <a href="/pets" id="yourPetList" class="w3-bar-item w3-button">Your Pets</a>
+                    <% } %></h2>
+                </div>
     </div>
 </section>  
+
 
 <%- include('partials/footer') %>

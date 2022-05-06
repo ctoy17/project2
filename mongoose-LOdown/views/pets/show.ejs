@@ -1,19 +1,12 @@
 <%- include('../partials/header') %>
-<img src="https://i.imgur.com/dCnu6w1.png?1" class="d-inline-block align-top" alt="">
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar">
-        
-    </a>
-    <div class="pageLinks">
-            <button><a href="/">Home</a></button>
-            <button><a href="/pets/new">Add Pet</a></button>
-            <button><a href="/pets">Back to Pets</a></button>
-        </div>
-  </nav>
+
+<div class="petDetailPage">
+        <img id="logo" src="https://i.imgur.com/frmvBKF.png">
+
 
 <div class="flex-container wrapper">
     <div id="show" class="row">
-        <div class="col-4">
+        <div class="col-3">
             <div class="card">
                 <% if(pet.petName) {%>
                     <div><img class="card-img-top img" src="data:image/<%= pet.petPhoto %>;base64,
@@ -23,7 +16,7 @@
                         <div>Age: <%= pet.petAge %></div>
                     </div>
                 <% } %>
-                <button><a href="/pets/<%= pet._id %>/events">Add Event</a></button>
+               <div class="addEventLink"> <a href="/pets/<%= pet._id %>/events">ADD EVENT</a></div>
             </div>
         </div>
 
@@ -32,13 +25,16 @@
             <% if (pet.events.length) { %> 
                 <div class="table-responsive">
                     <table class="table">
-                        <thead><h3 class="eventTable">Events</h3>
+                        <thead><div class="eventTable">Events
+                            <a href="/pets/<%= pet._id %>/events"><i class='fas fa-plus-circle' style='font-size:2em'></i></a></div>
                             <tr>
-                                <th>Entered By</th>
+                                
+                                <th></th>
                                 <th>Event Date</th>
-                                <th>Event Type</th>
+                                <th>Type</th>
                                 <th>Duration</th>
                                 <th>Details</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -50,10 +46,14 @@
                                     <td> <%= e.entryEvent %></td>
                                     <td> <%= e.duration %> </td>
                                     <td> <%= e.details %> </td>
+                                    <td>
+                                        <% if (user && user._id.equals(e.user)) { %>
+                                            <button type="submit"><a href="/events/<%= e._id %>/edit"><i class='far fa-edit'></i></a></button>
+                                            <% } %>
+                                    </td>
                                     <td><% if (user && user._id.equals(e.user)) { %>
                                         <form action="/events/<%= e._id %>?_method=DELETE" method="POST">
                                         <button type="submit">X</button>
-                                        </form>
                                         <% } %>
                                     </td>
                                 </tr>
@@ -62,7 +62,7 @@
                     </table>
                 </div>
             <% } else { %>
-                <h5>No Entries Yet</h5>
+                <h5>No Entries Yet <a href="/pets/<%= pet._id %>/events"><i class='fas fa-plus-circle' style='font-size:3em'></i></a></h5> 
             <% } %>
         </div>
     </div>
@@ -71,10 +71,10 @@
 <div class="removeMe">
 <% if (user && user._id.equals(pet.user)) { %> 
     <form action="/pets/<%= pet._id %>?_method=DELETE" method="POST">
-    <button type="submit" class="close">Delete This Pet and All Entries Attached</button>
+    <button type="submit" class="close">Delete This Pet</button>
     </form>
 <% } %>
-
+</div>
 
 
 <%- include('../partials/footer') %>

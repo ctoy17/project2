@@ -19,8 +19,6 @@ function index(req, res) {
 }
 
 
-
-
 function newPet(req, res){
     res.render('pets/new');
 }

@@ -4,7 +4,9 @@ const User = require('../models/user');
 module.exports = {
     new: newEntry,
     create,
-    delete: deleteEntry
+    delete: deleteEntry,
+    edit,
+    update
 };
 
 function newEntry(req, res) {
@@ -36,6 +38,34 @@ function deleteEntry(req, res, next) {
       res.redirect(`/pets/${pet._id}`);
     }).catch(function(err) {
       return next(err);
+    });
+  });
+}
+
+function edit(req, res) {
+  // Note the cool "dot" syntax to query on the property of a subdoc
+  Pet.findOne({'events._id': req.params.id}, function(err, pet) {
+    // Find the comment subdoc using the id method on Mongoose arrays
+    // https://mongoosejs.com/docs/subdocs.html
+    const event = pet.events.id(req.params.id);
+    // Render the comments/edit.ejs template, passing to it the comment
+    res.render('events/edit', {event});
+  });
+}
+
+function update(req, res) {
+  // Note the cool "dot" syntax to query on the property of a subdoc
+  Pet.findOne({'events._id': req.params.id}, function(err, pet) {
+    // Find the comment subdoc using the id method on Mongoose arrays
+    // https://mongoosejs.com/docs/subdocs.html
+    const eventSubdoc = pet.events.id(req.params.id);
+    // Ensure that the comment was created by the logged in user
+    // Update the text of the comment
+    eventSubdoc.details = req.body.details;
+    // Save the updated book
+    pet.save(function(err) {
+      // Redirect back to the book's show view
+      res.redirect(`/pets/${pet._id}`);
     });
   });
 }

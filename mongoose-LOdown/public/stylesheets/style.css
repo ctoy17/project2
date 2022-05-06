@@ -1,31 +1,57 @@
+*{
+  color: #222831;
+  font: 24px "Abel", Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
+}
 body {
-  padding: 50px;
-  font: 14px "Abel", Helvetica, Arial, sans-serif;
+  padding: 20px;
+  background: #E8E8E8;
+  font: 16px "Abel", Helvetica, Arial, sans-serif;
+  margin: 10px;
 }
 
+.w3-top.w3-bar.w3-wide.w3-card{
+  padding-top: 30px;
+  position: relative;
+}
+
+.w3-bar{
+  background-color: #E8E8E8;
+  padding-right: 20px;
+  width: 100%;
+}
+
+.w3-hide-small.w3-text-light-grey{
+  font: 2em "Abel", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.w3-bar-item.w3-button{
+  font-size: 28px;
+}
+#yourPetList{
+  border: 1pt #222831 solid;
+}
+
+img#logo{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px;
+}
 a {
-  color: #00B7FF;
+  text-transform: uppercase;
+  color: #222831;
 }
-.login {
-  display: flex;
-  justify-content: right;
-  height: 30px;
-}
-
-.login img {
-  height: 30px;
-}
-
 
 #home {
   width: 100%;
   height: 100vh;
   background-size: cover;
   position: relative;
+  background: #30475E;
+
 }
 #home:before {
   content: "";
-  background: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -45,9 +71,11 @@ a {
   text-align: center;
   padding: 0 15px;
 }
+.home-container{
+  border: 1px #222831;
+}
 #home h3 {
   background: rgba(255, 255, 255, 0.1);
-  color: #fff;
   font-size: 26px;
   padding: 10px 30px;
   margin-bottom: 30px;
@@ -59,31 +87,85 @@ a {
   font-weight: 700;
   line-height: 56px;
   text-transform: uppercase;
-  color: #fff;
 }
 #home h2 {
-  color: #eee;
   margin-bottom: 40px;
   font-size: 24px;
+}
+.allPetPage{
+  background-color: #30475E;
+}
+.petDetailPage{
+  background-color: #30475E;
+}
+.card-img-top{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .card-group{
   display: flex;
   justify-content: center;
+  text-transform: uppercase;
+  padding-bottom: 30px;
+}
+.card{
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 25px;
+  padding: 30px;
 }
 .card-body{
   text-align: center;
+  background-color: #E8E8E8;
 }
 #showName{
   font-size: 2em;
 }
 .flex-container {
   margin: auto;
-  max-width: 75rem;
+  max-width: 125rem;
+  height: 100%;
 }
-
+.col-8{
+  padding-left: 100px;
+}
+.col-8 > h5{
+  color: #E8E8E8;
+  font: 3em "Abel", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+.eventTable{
+  text-align: center;
+  font-size: 3em;
+}
+table{
+  justify-content: center;
+}
+td.event-user > img{
+  border-radius: 50%;
+  max-width: 40px;
+}
+.table-responsive{
+  background-color: #E8E8E8;
+  border-radius: 25px;
+  padding: 30px;
+}
+.addEventLink{
+  text-align: center;
+  background-color:#E8E8E8;
+}
 .removeMe{
   display: flex;
   flex-direction: row-reverse;
+}
+.removeMe > button{
+  background-color: #f0545485;
+  color: white;
+}
+footer>div{
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 10px;
 }
 @media screen and (min-width: 640px){
   .flex-container {

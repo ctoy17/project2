@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<div class="container" id="entry-div">
+  <h1>Events</h1>
+  <% if (user) { %>
+    <form action="/events/<%= event._id %>?_method=PUT" method="POST">
+    <fieldset disabled>
+        <div class="form-group">
+        <label>Event Type:</label>
+          <select class="form-control">
+            <option  value="<%= event.entryEvent%>"><%= event.entryEvent%></option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label>Date:</label>
+        <input type="text" class="form-control" value="<%= event.entryDate%>">
+      </div>
+      <div class="form-group">
+        <label>Event Duration:</label>
+        <input type="text" class="form-control" value="<%= event.duration%>">
+      </div>
+      </fieldset>
+      <div class="form-group">
+        <label>Details:</label>
+        <input type="text" class="form-control" name="details" value="<%= event.details%>">
+        <small id="detailInfo" class="form-text text-muted">Provide any details that may be helpful for the vet</small>
+      </div>
+        <input type="submit" value="Update Event">
+      
+    </form>
+<% } %> 
+</div>
+
+
+
+
+<%- include('../partials/footer') %>

@@ -2,25 +2,34 @@
 
 
 <div class="container">
-    <h1 class="mb-4 text-white">New Pet</h1>
+    <h1>New Pet</h1>
     <% if (user) { %>
-    <form action="/pets" method="POST" enctype="multipart/form-data">
+    <form action="/pets" method="POST" enctype="multipart/form-data" id="addPet">
         <div class="form-group">
-            <label for="petName">Pet Name</label>
-            <input type="text" name="petName">
+            <label>Pet Name</label>
+            <input type="text" name="petName" class="form-control">
+        </div>
+        <br><br>
+        <div class="form-group">
             <label for="petAge" >Pet Age</label>
-            <input type="number" class="form-control" name="petAge">
+            <input type="number" name="petAge">
             <label for="animalType" >Type of Pet</label>
             <select name="animalType">
+                <option value="select">Choose...</option>
                 <option value="cat">Cat</option>
                 <option value="dog">Dog</option>
                 <option value="other">Other</option>
             </select>
-            <label for="imageFile">Picture</label>
-            <input type="file" id="imageFile" accept="image/*" class="form-control" name="img">
         </div>
+        <br><br>
+        <div class="form-group">
+            <label for="imageFile">Picture</label>
+            <input type="file" id="imageFile" accept="image/*" name="img" class="form-control">
+        </div>
+        <br><br>
             <a href="/" class="btn btn-warning">Cancel</a>
             <button type="submit" class="btn btn-primary">Save</button>
     </form>
-    <% } %></div>
+    <% } %>
+</div>
 <%- include('../partials/footer') %>
